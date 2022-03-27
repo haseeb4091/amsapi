@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import buildings
-from .models import Owner
-from .models import addroom
-from .models import customeraccount
+from  .models import buildings
+from  .models import Owner
+from  .models import addroom
+from  .models import customeraccount
 class buildingSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=100)
     address = serializers.CharField(max_length=100)
@@ -39,4 +39,14 @@ class customeraccountSerializer(serializers.Serializer):
     debt = serializers.IntegerField()
     def create(self, validated_data):
         return customeraccount.objects.create(**validated_data)
+
+class allbillsSerializer(serializers.Serializer):
+    date = serializers.CharField(max_length=100)
+    accountno = serializers.IntegerField()
+    rent = serializers.IntegerField()
+    security = serializers.IntegerField()
+    bill = serializers.IntegerField()
+    remaining = serializers.IntegerField()
+    total = serializers.IntegerField()
+    paid = serializers.IntegerField()
 
